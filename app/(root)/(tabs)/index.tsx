@@ -1,5 +1,5 @@
-import { Text, View } from "react-native";
-import { Link } from "expo-router";
+import { Text, View, StyleSheet } from "react-native";
+
 export default function Index() {
   return (
     <View
@@ -9,16 +9,24 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text className="text-3xl font-bold font-rubik">Welcome to the app</Text>
-      <Link href="/profile">
-        <Text>Profile</Text>
-      </Link>
-      <Link href="/prayers/1">
-        <Text>Prayer</Text>
-      </Link>
-      <Link href="/sign-in">
-        <Text>Sign In</Text>
-      </Link>
+      <View>
+        <Text style={styles.title}>Welcome to Pray4Me</Text>
+        <Text style={styles.subtitle}>Connect, Share, and Pray Together</Text>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+  },
+});
