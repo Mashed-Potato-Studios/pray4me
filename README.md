@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
+# Prayed
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application for connecting people through prayer, built with Expo and Appwrite.
 
-## Get started
+## Overview
 
-1. Install dependencies
+Prayed is a platform that allows users to share prayer requests, connect with others, and build a supportive prayer community. The app features a modern, intuitive interface and powerful features to enhance the prayer experience.
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+### Core Features
+- 🙏 Prayer Requests: Share and respond to prayer requests
+- 👥 Community: Connect with other users and prayer groups
+- 📱 Modern UI: Clean, intuitive interface with dark mode support
+- 🔔 Notifications: Stay updated on prayer requests and responses
+- 📖 Bible Integration: Access Bible verses and daily readings
 
-   ```bash
-    npx expo start
-   ```
+### Technical Features
+- ⚡ Expo Router for navigation
+- 🔐 Appwrite backend integration
+- 💅 Tailwind CSS for styling
+- 🎨 Custom reusable components
+- 📱 Cross-platform compatibility
 
-In the output, you'll find options to open the app in a
+## Getting Started
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Prerequisites
+- Node.js (v14 or later)
+- npm or yarn
+- Expo CLI
+- Appwrite instance
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### Installation
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/pray-4-me.git
+cd pray-4-me
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-## Learn more
+3. Create a `.env.local` file:
+```env
+EXPO_PUBLIC_APPWRITE_ENDPOINT=your-appwrite-endpoint
+EXPO_PUBLIC_APPWRITE_PROJECT_ID=your-project-id
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Start the development server:
+```bash
+npm start
+# or
+yarn start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project Structure
 
-## Join the community
+```
+pray-4-me/
+├── app/                    # App screens and navigation
+│   ├── (auth)/            # Authentication screens
+│   └── (root)/            # Main app screens
+├── components/            # Reusable components
+├── lib/                   # Utilities and services
+├── providers/            # Context providers
+└── types/                # TypeScript definitions
+```
 
-Join our community of developers creating universal apps.
+## Contributing
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Expo](https://expo.dev)
+- [Appwrite](https://appwrite.io)
+- [React Native](https://reactnative.dev)
+- [Tailwind CSS](https://tailwindcss.com)
