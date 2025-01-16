@@ -24,9 +24,15 @@ export default function SignIn() {
     setIsSubmitting(true)
     try {
       if (isSignUp) {
-        await signUpWithEmail(email, password, name)
+        const { user, session } = await signUpWithEmail(email, password, name)
+        if (user && session) {
+          Alert.alert('Success', 'Account created successfully!')
+        }
       } else {
-        await loginWithEmail(email, password)
+        const { user, session } = await loginWithEmail(email, password)
+        if (user && session) {
+          Alert.alert('Success', 'Logged in successfully!')
+        }
       }
       await refetch()
     } catch (error: any) {
