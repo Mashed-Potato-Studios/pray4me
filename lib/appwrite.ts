@@ -1,6 +1,7 @@
-import { Account, Avatars, Client, OAuthProvider, Permission, Role } from "react-native-appwrite";
+import { Account, Avatars, Client, OAuthProvider, Permission, Role, Databases, ID } from "react-native-appwrite";
 import * as Linking from 'expo-linking';
 import { openAuthSessionAsync } from 'expo-web-browser';
+import { createUser, getUserByEmail } from './users';
 
 export const config = {
     platform: "com.mashedpotatostudios.prayed",
@@ -16,6 +17,7 @@ export const client = new Client()
 // Initialize services
 export const avatar = new Avatars(client);
 export const accounts = new Account(client);
+export const databases = new Databases(client);
 
 export async function login() {
     try {
@@ -65,7 +67,11 @@ export async function login() {
 export async function loginWithEmail(email: string, password: string) {
     try {
         const session = await accounts.createEmailPasswordSession(email, password);
-        return session;
+        const user = await getUserByEmail(email);
+        if (!user) {
+            throw new Error('User not found in database');
+        }
+        return { session, user };
     } catch (error) {
         console.error('Login error:', error);
         throw error;
@@ -74,12 +80,18 @@ export async function loginWithEmail(email: string, password: string) {
 
 export async function signUpWithEmail(email: string, password: string, name: string) {
     try {
-        const user = await accounts.create('unique()', email, password, name);
-        // Automatically log in after signup
-        await loginWithEmail(email, password);
-        return user;
+        // Create Appwrite account
+        const account = await accounts.create(ID.unique(), email, password, name);
+        
+        // Create user document in database
+        const user = await createUser(name, email);
+        
+        // Automatically log in the user
+        const session = await accounts.createEmailPasswordSession(email, password);
+        
+        return { account, user, session };
     } catch (error) {
-        console.error('Signup error:', error);
+        console.error('Sign up error:', error);
         throw error;
     }
 }
