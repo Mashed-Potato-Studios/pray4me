@@ -27,23 +27,23 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={28} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="home-outline" size={28} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="prayers"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="book" size={28} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="book-outline" size={28} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="add"
         options={{
-          tabBarIcon: ({ size }) => (
+          tabBarIcon: () => (
             <View style={{
               width: 50,
               height: 50,
@@ -61,7 +61,7 @@ export default function TabLayout() {
               shadowRadius: 4,
               elevation: 5,
             }}>
-              <Ionicons name="add" size={30} color="white" />
+              <Ionicons name="add-outline" size={30} color="white" />
             </View>
           ),
           tabBarButton: (props) => (
@@ -75,16 +75,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="community"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="people" size={28} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={28} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="people-outline" size={28} color={color} />
           ),
         }}
       />
