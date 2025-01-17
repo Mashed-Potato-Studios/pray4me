@@ -37,9 +37,13 @@ export async function login() {
             ]
         );
 
+        if (!oauthUrl) {
+            throw new Error('Failed to create OAuth session');
+        }
+
         // Open browser for authentication
         const result = await openAuthSessionAsync(
-            oauthUrl.toString(),
+            typeof oauthUrl === 'string' ? oauthUrl : oauthUrl.toString(),
             `${config.platform}://`,
             {
                 showInRecents: true,
@@ -50,17 +54,15 @@ export async function login() {
             // After successful OAuth, get the current session
             try {
                 const session = await accounts.getSession('current');
-                return !!session;
-            } catch (sessionError) {
-                console.error('Session error:', sessionError);
-                return false;
+                return session;
+            } catch (error) {
+                console.error('Error getting session:', error);
+                throw error;
             }
         }
-
-        return false;
     } catch (error) {
-        console.error('Login error:', error);
-        return false;
+        console.error('Error during login:', error);
+        throw error;
     }
 }
 
